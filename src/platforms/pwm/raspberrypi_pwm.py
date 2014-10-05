@@ -1,6 +1,6 @@
 import RPi.GPIO as gpio
 
-from platform.pwm import base_pwm
+from platforms.pwm import base_pwm
 
 class RaspberryPiPWMOutput(base_pwm.BasePWM):
 

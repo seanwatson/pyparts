@@ -1,9 +1,6 @@
 import spidev
 
-from platform.spi import base_spi
-
-MSB_FIRST = base_spi.MSB_FIRST
-LSB_FIRST = base_spi.LSB_FIRST
+from platforms.spi import base_spi
 
 
 class RaspberryPiHardwareSPIBus(base_spi.BaseHardwareSPIBus):

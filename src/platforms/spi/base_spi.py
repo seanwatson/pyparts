@@ -1,8 +1,7 @@
-MSB_FIRST = 0
-LSB_FIRST = 1
-
-
 class BaseSPIBus(object):
+
+  MSB_FIRST = 0
+  LSB_FIRST = 1
 
   def __init__(self):
     self._is_open = False
@@ -56,7 +55,7 @@ class BaseSPIBus(object):
     return self._mode
 
   def set_bit_order(self, order):
-    if order not in (MSB_FIRST, LSB_FIRST):
+    if order not in (self.MSB_FIRST, self.LSB_FIRST):
       raise ValueError('Bit order must be MSB_FIRST or LSB_FIRST')
     self._set_bit_order(order)
     self._bit_order = order

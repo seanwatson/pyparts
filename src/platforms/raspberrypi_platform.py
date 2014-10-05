@@ -1,9 +1,9 @@
 import RPi.GPIO as gpio
 
-from platform import base_platform
-from platform.gpio import raspberrypi_gpio as rpi_gpio
-from platform.pwm import raspberrypi_pwm as rpi_pwm
-from platform.spi import raspberrypi_spi as rpi_spi
+from platforms import base_platform
+from platforms.gpio import raspberrypi_gpio as rpi_gpio
+from platforms.pwm import raspberrypi_pwm as rpi_pwm
+from platforms.spi import raspberrypi_spi as rpi_spi
 
 BCM = gpio.BCM
 BOARD = gpio.BOARD

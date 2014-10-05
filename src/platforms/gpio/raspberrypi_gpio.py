@@ -1,6 +1,6 @@
 import RPi.GPIO as rpi_gpio
 
-from platform.gpio import base_gpio
+from platforms.gpio import base_gpio
 
 
 class RaspberryPiGPIO(base_gpio.BaseGPIO):
