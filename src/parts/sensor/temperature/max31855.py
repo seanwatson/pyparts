@@ -1,4 +1,4 @@
-from component import base_component
+from parts.sensor.temperature import base_temperature_sensor
 
 _INTERNAL_TEMP_MASK = 0xfff0
 _INTERNAL_TEMP_SHIFT = 4
@@ -13,7 +13,7 @@ _THERMOCOUPLE_DEGREES_C_PER_BIT = 0.25
 _FAULT_BIT_MASK = 0x8000
 
 
-class MAX31855(base_component.BaseComponent):
+class MAX31855(base_temperature_sensor.BaseTemperatureSensor):
 
   def __init__(self, spi_bus):
     super(MAX31855, self).__init__()
@@ -27,16 +27,13 @@ class MAX31855(base_component.BaseComponent):
     self._spi_bus.close()
     super(MAX31855, self).__del__()
 
-  def get_thermocouple_temp_c(self):
+  def get_temp_c(self):
     value = self._read()
     value &= _THERMOCOUPLE_TEMP_MASK
     value >>= _THERMOCOUPLE_TEMP_SHIFT
     if value & _THERMOCOUPLE_TEMP_MSB_MASK:
       value -= 16384
     return value * _THERMOCOUPLE_DEGREES_C_PER_BIT
-
-  def get_thermocouple_temp_f(self):
-    return self._to_f(self.get_thermocouple_temp_c())
 
   def get_internal_temp_c(self):
     value = self._read()
@@ -58,6 +55,3 @@ class MAX31855(base_component.BaseComponent):
     if packed_value & _FAULT_BIT_MASK:
       raise RuntimeError('MAX31855 error. Fault bit set.')
     return packed_value
-
-  def _to_f(self, temp):
-    return (temp * 9 / 5) + 32
