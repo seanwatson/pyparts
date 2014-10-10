@@ -13,9 +13,8 @@ PWM_FREQUENCY_HZ = 2000
 
 def main():
   platform = rpi_platform.RasberryPiPlatform(PIN_NAMING_SCHEME)
-  components = Components(platform)
 
-  rgb = components.get_rgb_led(RED_PIN, GREEN_PIN, BLUE_PIN)
+  # TODO: Make pins and create an led object with them.
 
   rgb.set_frequency(PWM_FREQUENCY_HZ)
   print 'PWM Frequency:', rgb.get_frequency
