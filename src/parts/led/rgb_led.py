@@ -1,9 +1,9 @@
 import time
 
-from component import base_component
+from parts import base_part
 
 
-class RGBLed(base_component.BaseComponent):
+class RGBLed(base_part.BasePart):
 
   def __init__(self, red_pwm, blue_pwm, green_pwm):
     self._red_pwm = red_pwm

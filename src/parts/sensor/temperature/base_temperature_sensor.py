@@ -1,6 +1,6 @@
-from parts import base_component
+from parts import base_part
 
-class BaseTemperatureSensor(base_component.BaseComponent):
+class BaseTemperatureSensor(base_part.BasePart):
 
   def get_temp_c(self):
     raise NotImplementedError

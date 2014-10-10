@@ -1,7 +1,7 @@
 import time
 
-from pyparts.component.components import Components
-from pyparts.platfom import raspberrypi_platform as rpi_platform
+from pyparts.parts.led import rgb_led
+from pyparts.platforms import raspberrypi_platform as rpi_platform
 
 RED_PIN = 1
 GREEN_PIN = 2
@@ -14,7 +14,10 @@ PWM_FREQUENCY_HZ = 2000
 def main():
   platform = rpi_platform.RasberryPiPlatform(PIN_NAMING_SCHEME)
 
-  # TODO: Make pins and create an led object with them.
+  red_pwm = platform.get_pwm_output(RED_PIN)
+  green_pwm = platform.get_pwm_output(GREEN_PIN)
+  blue_pwm = platform.get_pwm_output(BLUE_PIN)
+  rgb = rgb_led.RGBLed(red_pwm, green_pwm, blue_pwm)
 
   rgb.set_frequency(PWM_FREQUENCY_HZ)
   print 'PWM Frequency:', rgb.get_frequency

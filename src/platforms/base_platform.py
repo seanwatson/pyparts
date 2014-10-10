@@ -1,4 +1,12 @@
 class BasePlatform(object)
+  """An abstract class for creating platforms.
+
+  BasePlatform is what all platforms are created from. Platforms are expected
+  to override the methods of BasePlatform to provide different kinds of
+  peripheral devices like GPIO pins, PWM pins, and communication busses.
+  Platforms should only implement the methods for peripheral types supported
+  by the platform.
+  """
 
   def get_digital_input(self, pin):
     raise NotImplementedError
