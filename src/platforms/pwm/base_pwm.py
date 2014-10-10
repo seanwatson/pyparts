@@ -1,4 +1,14 @@
 class BasePWM(object):
+  """A class for creating PWM type peripherals.
+
+  BasePWM implements methods to interact with a PWM interface. Platforms are
+  expected to subclass BasePWM and provide platform specific implementations of
+  _enable, _disable, _set_duty_cycle, and _set_frequency.
+
+  Attributes:
+    _enabled: Whether or not the PWM is enabled. True or False.
+    _output_pin: The DigitalOutput GPIO pin being used for PWM.
+  """
 
   def __init__(self, output_pin):
     self._enabled = False
