@@ -27,7 +27,10 @@ class BaseGPIO(object):
     _mode: The mode the pin is in. For example INPUT or OUTPUT.
   """
 
-  def __init__(self, pin, mode):
+  PUD_UP = None
+  PUD_DOWN = None
+
+  def __init__(self, pin, mode, pull_up_down):
     """Creates a GPIO pin.
 
     Args:
@@ -36,6 +39,7 @@ class BaseGPIO(object):
     """
     self._pin = pin
     self._mode = mode
+    self._pull_up_down = pull_up_down
 
   def _write(self, value):
     """Writes a value to the pin.
@@ -72,6 +76,9 @@ class BaseGPIO(object):
       The mode being used by the GPIO pin.
     """
     return self._mode
+
+  def get_pull_up_down(self):
+    return self._pull_up_down
 
   def set_high(self):
     """Writes a value of HIGH to the GPIO pin.
@@ -111,3 +118,21 @@ class BaseGPIO(object):
     Returns:
       True if the GPIO pin is in a LOW state, False otherwise.
     return self._read() == LOW
+    """
+
+
+class BaseDigitalInput(BaseGPIO):
+
+  # Platforms should define these
+  INTERRUPT_FALLING = None
+  INTERRUPT_RISING = None
+  INTERRUPT_BOTH = None
+
+  def add_interrupt(self, type, callback=None, debounce_time_ms=0):
+    raise NotImplementedError
+
+  def wait_for_edge(self, type):
+    raise NotImplementedError
+
+  def remove_interrupt(self):
+    raise NotImplementedError
