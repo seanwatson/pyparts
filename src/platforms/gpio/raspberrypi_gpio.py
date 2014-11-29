@@ -16,14 +16,14 @@ class RaspberryPiGPIO(base_gpio.BaseGPIO):
       pin: Integer. The pin number to create the GPIO on.
       mode: INPUT or OUTPUT. The pin mode to put the GPIO in.
     """
-    super(RaspberryPiGPIO, self).__init__(pin, mode, pull_up_down)
+    super(RaspberryPiGPIO, self).__init__(pin, mode)
     
     if self._mode == base_gpio.INPUT:
       pin_type = rpi_gpio.IN
     else:
       pin_type = rpi_gpio.OUT
 
-    rpi_gpio.setup(self._pin, pin_type)
+    rpi_gpio.setup(self._pin, pin_type, pull_up_down=pull_up_down)
     
   def _write(self, value):
     """Writes a value to the pin.

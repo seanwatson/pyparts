@@ -117,6 +117,9 @@ class Nokia5110(base_part.BasePart):
   def set_bias(self, bias):
     self.send_extended_command(_SET_BIAS | bias)
 
+  def set_backlight(self, duty_cycle):
+    self._led.set_duty_cycle(duty_cycle)
+
   def height(self):
     return _LCD_HEIGHT
 
