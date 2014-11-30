@@ -18,10 +18,9 @@ class MAX31855(base_temperature_sensor.BaseTemperatureSensor):
   def __init__(self, spi_bus):
     super(MAX31855, self).__init__()
     self._spi_bus = spi_bus
-    self._spi_bus.set_mode(0)
-    self._spi_bus.set_bit_order(spi_bus.MSB_FIRST)
-    self._spi_bus.set_clock_frequency(2000)
     self._spi_bus.open()
+    self._spi_bus.set_mode(0)
+    self._spi_bus.set_clock_frequency(4000000)
 
   def __del__(self):
     self._spi_bus.close()
