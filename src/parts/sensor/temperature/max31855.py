@@ -1,4 +1,4 @@
-from parts.sensor.temperature import base_temperature_sensor
+from pyparts.parts.sensor.temperature import base_temperature_sensor
 
 _INTERNAL_TEMP_MASK = 0xfff0
 _INTERNAL_TEMP_SHIFT = 4

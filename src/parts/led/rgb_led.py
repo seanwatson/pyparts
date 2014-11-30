@@ -1,6 +1,6 @@
 import time
 
-from parts import base_part
+from pyparts.parts import base_part
 
 
 class RGBLed(base_part.BasePart):

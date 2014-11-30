@@ -1,6 +1,8 @@
 import math
+import time
+import threading
 
-from parts import base_part
+from pyparts.parts import base_part
 
 
 class RotaryEncoder(base_part.BasePart):
@@ -24,7 +26,7 @@ class RotaryEncoder(base_part.BasePart):
       delta = (state - self._last_state) % 4
       if delta == 3:
         delta = -1
-      elif delta == 2
+      elif delta == 2:
         # Assume two steps in the same direction as the previous step.
         delta = int(math.copysign(delta, self._last_delta))
       self._last_state = state
@@ -34,7 +36,7 @@ class RotaryEncoder(base_part.BasePart):
   class Worker(threading.Thread):
 
     def __init__(self, a_pin, b_pin):
-      super(Worker, self).__init__()
+      super(RotaryEncoder.Worker, self).__init__()
       self._lock = threading.Lock()
       self._encoder = RotaryEncoder(a_pin, b_pin)
       self._delta = 0

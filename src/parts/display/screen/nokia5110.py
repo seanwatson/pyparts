@@ -1,11 +1,11 @@
 import time
 
-from parts import base_part
+from pyparts.parts import base_part
 
 _LCD_WIDTH = 84
 _LCD_HEIGHT = 48
 _NUMBER_OF_LINES = 6
-_PIXELS_PER_LINE = LCD_HEIGHT / NUMBER_OF_LINES
+_PIXELS_PER_LINE = _LCD_HEIGHT / _NUMBER_OF_LINES
 _POWER_DOWN = 0x04
 _ENTRY_MODE = 0x02
 
@@ -37,10 +37,10 @@ class Nokia5110(base_part.BasePart):
       led: LED object. Controls the backlight.
     """
     self._spi = spi
+    self._spi.open()
     self._spi.set_mode(0)
     self._spi.set_bit_order(spi.MSB_FIRST)
-    self._spi.set_clock_frequency(2000)
-    self._spi.open()
+    #self._spi.set_clock_frequency(2000)
 
     self._dc = dc
     self._rst = rst
@@ -58,7 +58,7 @@ class Nokia5110(base_part.BasePart):
   def send_extended_command(self, command):
     # Set extended command mode
     self.send_command(_FUNCTION_SET | _EXTENDED_INSTRUCTION)
-    self.send_command(c)
+    self.send_command(command)
     # Set normal display mode.
     self.send_command(_FUNCTION_SET)
     self.send_command(_DISPLAY_CONTROL | _DISPLAY_NORMAL)

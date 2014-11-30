@@ -1,6 +1,6 @@
 import spidev
 
-from platforms.spi import base_spi
+from pyparts.platforms.spi import base_spi
 
 
 class RaspberryPiHardwareSPIBus(base_spi.BaseHardwareSPIBus):
@@ -10,7 +10,7 @@ class RaspberryPiHardwareSPIBus(base_spi.BaseHardwareSPIBus):
     self._spi_device = spidev.SpiDev()
 
   def _open(self):
-    self.open(self._port, self._device)
+    self._spi_device.open(self._port, self._device)
 
   def _close(self):
     self._spi_device.close()
@@ -22,7 +22,7 @@ class RaspberryPiHardwareSPIBus(base_spi.BaseHardwareSPIBus):
     self._spi_device.mode = mode
 
   def _set_bit_order(self, order):
-    self._spi_device.lsbfirst = order == LSB_FIRST
+    self._spi_device.lsbfirst = order == self.LSB_FIRST
 
   def write(self, data):
     self._spi_device.writebytes(data)

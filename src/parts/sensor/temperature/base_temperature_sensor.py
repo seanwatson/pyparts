@@ -1,4 +1,4 @@
-from parts import base_part
+from pyparts.parts import base_part
 
 class BaseTemperatureSensor(base_part.BasePart):
 

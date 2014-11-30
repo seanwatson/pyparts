@@ -1,4 +1,4 @@
-class BasePlatform(object)
+class BasePlatform(object):
   """An abstract class for creating platforms.
 
   BasePlatform is what all platforms are created from. Platforms are expected

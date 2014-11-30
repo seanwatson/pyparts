@@ -1,9 +1,9 @@
 import RPi.GPIO as gpio
 
-from platforms import base_platform
-from platforms.gpio import raspberrypi_gpio as rpi_gpio
-from platforms.pwm import raspberrypi_pwm as rpi_pwm
-from platforms.spi import raspberrypi_spi as rpi_spi
+from pyparts.platforms import base_platform
+from pyparts.platforms.gpio import raspberrypi_gpio as rpi_gpio
+from pyparts.platforms.pwm import raspberrypi_pwm as rpi_pwm
+from pyparts.platforms.spi import raspberrypi_spi as rpi_spi
 
 
 # Create local copies of the numbering schemes for conveinence.
@@ -25,7 +25,7 @@ class RaspberryPiPlatform(base_platform.BasePlatform):
     _pin_numbering: BCM or BOARD. The current pin numbering scheme.
   """
 
-  def __init__(self, pin_numbering=rpi_gpio.BCM):
+  def __init__(self, pin_numbering=gpio.BOARD):
     """Creates a Raspberry Pi platform.
 
     Args:

@@ -7,7 +7,7 @@ class BaseSPIBus(object):
     self._is_open = False
     self._clock_frequency = 0.0
     self._mode = 0
-    self._bit_order = MSB_FIRST
+    self._bit_order = self.MSB_FIRST
 
   def _open(self):
     raise NotImplementedError
@@ -18,14 +18,14 @@ class BaseSPIBus(object):
   def _set_clock_frequency(self, frequency_hz):
     raise NotImplementedError
 
-  def _set_mode(self, mode)
+  def _set_mode(self, mode):
     raise NotImplementedError
 
   def _set_bit_order(self, order):
     raise NotImplementedError
 
   def open(self):
-    self.open()
+    self._open()
     self._is_open = True
 
   def close(self):

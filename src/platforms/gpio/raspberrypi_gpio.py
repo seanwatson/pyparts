@@ -1,6 +1,6 @@
 import RPi.GPIO as rpi_gpio
 
-from platforms.gpio import base_gpio
+from pyparts.platforms.gpio import base_gpio
 
 
 class RaspberryPiGPIO(base_gpio.BaseGPIO):
@@ -31,7 +31,7 @@ class RaspberryPiGPIO(base_gpio.BaseGPIO):
     Args:
       value: HIGH or LOW. The value to write to the pin.
     """
-    rpi_gpio.output(self.pin, value)
+    rpi_gpio.output(self._pin, value)
 
   def _read(self):
     """Reads the current value from the pin.
@@ -39,10 +39,10 @@ class RaspberryPiGPIO(base_gpio.BaseGPIO):
     Returns:
       The GPIO pin's current value as HIGH or LOW.
     """
-    return rpi_gpio.input(self.pin)
+    return rpi_gpio.input(self._pin)
 
 
-def RaspberryPiDigitalInput(base_gpio.BaseDigitalInput, RaspberryPiGPIO):
+class RaspberryPiDigitalInput(base_gpio.BaseDigitalInput, RaspberryPiGPIO):
   """Raspberry Pi implementation of a DigitalInput."""
 
   INTERRUPT_FALLING = rpi_gpio.FALLING
@@ -52,7 +52,7 @@ def RaspberryPiDigitalInput(base_gpio.BaseDigitalInput, RaspberryPiGPIO):
   def __init__(self, pin):
     super(RaspberryPiDigitalInput, self).__init__(pin, base_gpio.INPUT)
 
-  def add_interrupt(self, type, callback=None, debounce_time_ms=0)
+  def add_interrupt(self, type, callback=None, debounce_time_ms=0):
     rpi_gpio.add_event_detect(self._pin, type, callback, debounce_time_ms)
 
   def wait_for_edge(self, type):
@@ -62,8 +62,8 @@ def RaspberryPiDigitalInput(base_gpio.BaseDigitalInput, RaspberryPiGPIO):
     rpi_gpio.remove_event_detection(self._pin)
 
 
-def RaspberryPiDigitalOutput(RaspberryPiGPIO):
+class RaspberryPiDigitalOutput(RaspberryPiGPIO):
   """Raspberry Pi implementation of a DigitalOutput."""
 
   def __init__(self, pin):
-    super(RaspberryPiDigitalInput, self).__init__(pin, base_gpio.OUTPUT)
+    super(RaspberryPiDigitalOutput, self).__init__(pin, base_gpio.OUTPUT)

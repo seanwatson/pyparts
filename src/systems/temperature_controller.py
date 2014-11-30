@@ -1,6 +1,6 @@
 import time
 
-from logic import pid_controller
+from pyparts.logic import pid_controller
 
 class TemperatureController(object):
 
