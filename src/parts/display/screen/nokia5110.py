@@ -39,8 +39,7 @@ class Nokia5110(base_part.BasePart):
     self._spi = spi
     self._spi.open()
     self._spi.set_mode(0)
-    self._spi.set_bit_order(spi.MSB_FIRST)
-    #self._spi.set_clock_frequency(2000)
+    self._spi.set_clock_frequency(4000000)
 
     self._dc = dc
     self._rst = rst
@@ -82,7 +81,6 @@ class Nokia5110(base_part.BasePart):
     self._rst.set_high()
 
   def set_cursor(self, x, y):
-    self.send_command()
     self.send_command(_SET_X_ADDR | x)
     self.send_command(_SET_Y_ADDR | y)
 
@@ -92,7 +90,6 @@ class Nokia5110(base_part.BasePart):
   def display_image(self, image):
     if image.mode != '1':
       raise ValueError('Image must be in 1bit mode.')
-    index = 0
     buffer = []
     pix = image.load()
     for row in range(_NUMBER_OF_LINES):
@@ -101,10 +98,10 @@ class Nokia5110(base_part.BasePart):
         for bit in range(8):
           bits = bits << 1
           bits |= 1 if pix[(x, row * _PIXELS_PER_LINE + 7 - bit)] == 0 else 0
-          buffer[index] = bits
-          index += 1
-    self.reset_cursor()
+        buffer.append(bits)
+    self.clear()
     self.send_data(buffer)
+
 
   def clear(self):
     self.reset_cursor()
