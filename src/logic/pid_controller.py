@@ -35,7 +35,7 @@ class PIDController(object):
   class Worker(threading.Thread):
 
     def __init__(self, kp, kd, ki, input_func, output_func):
-      super(Worker, self).__init__()
+      super(PIDController.Worker, self).__init__()
       self._controller = PIDController(kp, ki, kd)
       self._input_func = input_func
       self._output_func = output_func
@@ -55,4 +55,4 @@ class PIDController(object):
       while not self._stop:
         current_val = self._input_func()
         error = self._set_point - current_val
-        self._output_func(self._controller.get_output())
+        self._output_func(self._controller.get_output(error))

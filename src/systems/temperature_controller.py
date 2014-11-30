@@ -13,14 +13,14 @@ class TemperatureController(object):
         kp, ki, kd, self._pid_input_func, self._pid_output_func)
 
   def _pid_input_func(self):
-    return self._time_sensor.get_temp_c()
+    return self._temp_sensor.get_temp_c()
 
   def _pid_output_func(self, val):
     # If the sensor is too hot, turn off the heater
     if val <= 0:
       self._heater_pin.set_duty_cycle(0)
       return
-    if val > MAX_ERROR_DEGREES_C:
+    if val > self.MAX_ERROR_DEGREES_C:
       self._heater_pin.set_duty_cycle(100)
       return
     self._heater_pin.set_duty_cycle(float(val) / self.MAX_ERROR_DEGREES_C * 100)
