@@ -3,61 +3,133 @@ class BasePWM(object):
 
   BasePWM implements methods to interact with a PWM interface. Platforms are
   expected to subclass BasePWM and provide platform specific implementations of
-  _enable, _disable, _set_duty_cycle, and _set_frequency.
+  _enable, _disable, _set_duty_cycle, and _set_frequency_hz.
 
   Attributes:
-    _enabled: Whether or not the PWM is enabled. True or False.
-    _output_pin: The DigitalOutput GPIO pin being used for PWM.
+    _enabled: Boolean. Whether or not the PWM is enabled.
+    _output_pin: DigitalOutput. The DigitalOutput GPIO pin being used for PWM.
+    _duty_cycle. Float from 0.0 to 100.0. The current duty cycle as a percent.
+    _frequency_hz: Float. The current PWM frequency in Hertz.
   """
 
   def __init__(self, output_pin):
+    """Creates a PWM output.
+
+    Args:
+      output_pin: A DigitalOutput to use for PWM output.
+    """
     self._enabled = False
     self._output_pin = output_pin
     self._duty_cycle = 0.0
     self._frequency_hz = 0.0
 
   def _enable(self):
+    """Enables the PWM output.
+
+    This method should be implemented by the platform.
+    """
     raise NotImplementedError
 
   def _disable(self):
+    """Disables the PWM output.
+
+    This method should be implemented by the platform.
+    """
     raise NotImplementedError
 
   def _set_duty_cycle(self, duty_cycle):
+    """Sets the duty cycle of the PWM output.
+
+    This method should be implemented by the platform.
+
+    Args:
+      duty_cycle: Float from 0.0 to 100.0. Duty cycle to set PWM output to.
+    """
     raise NotImplementedError
 
-  def _set_frequency(self, freqency_hz):
+  def _set_frequency_hz(self, freqency_hz):
+    """Sets the PWM frequency used for PWM output.
+
+    This method should be implemented by the platform.
+
+    Args:
+      frequency_hz: Float. The frequency to set the PWM output to.
+    """
     raise NotImplementedError
 
   def enable(self):
+    """Enables the PWM output."""
     self._enable()
     self._enabled = True
 
   def disable(self):
+    """Disables the PWM output."""
     self._disable()
     self._enabled = False
 
   def is_enabled(self):
+    """Checks if the PWM output is enabled.
+
+    Returns:
+      True if the PWM output is enabled, Flase otherwise.
+    """
     return self._enabled
 
-  def set_duty_cycle(self, duty_cycle):
+  @property
+  def duty_cycle(self):
+    """Gets the current value for the PWM output's duty cycle.
+
+    Returns:
+      The current duty cycle as a float.
+    """
+    return self._duty_cycle
+
+  @duty_cycle.setter
+  def duty_cycle(self, duty_cycle):
+    """Sets the duty cycle of the PWM output.
+
+    Args:
+      duty_cycle: Float from 0.0 to 100.0. Duty cycle to set the PWM output to.
+
+    Raises:
+      ValueError: Thrown if duty_cycle is not between 0.0 and 100.0
+    """
     if duty_cycle < 0 or duty_cycle > 100:
       raise ValueError('Duty cycle must be between 0 and 100. Got: %d'
                        % duty_cycle)
     self._set_duty_cycle(duty_cycle)
     self._duty_cycle = duty_cycle
 
-  def get_duty_cycle(self):
-    return self._duty_cycle
+  @property
+  def frequency_hz(self):
+    """Gets the current frequency used by the PWM output.
 
-  def set_frequency(self, frequency_hz):
+    Returns:
+      The current frequency in Hertz as a float.
+    """
+    return self._frequency_hz
+
+  @frequency_hz.setter
+  def frequency_hz(self, frequency_hz):
+    """Sets the PWM frequency used for PWM output.
+
+    Args:
+      frequency_hz: Float. The frequency to set the PWM output to.
+
+    Raises:
+      ValueError: Thrown if the frequency is negative.
+    """
     if frequency_hz < 0:
       raise ValueError('Frequency must be greater than 0. Got: %d'
                        % frequency_hz)
-    self._set_frequency(frequency_hz)
+    self._set_frequency_hz(frequency_hz)
     self._frequency_hz = frequency_hz
 
-  def get_frequency(self):
-    return self._frequency_hz
+  @property
+  def pin_number(self):
+    """Gets the pin number of the PWM output.
 
-  def get_pin_number(self):
-    return self._output_pin.get_pin_number()
+    Returns:
+      The pin number as an integer.
+    """
+    return self._output_pin.pin_number

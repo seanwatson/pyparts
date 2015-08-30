@@ -5,7 +5,6 @@ from pyparts.platforms.gpio import raspberrypi_gpio as rpi_gpio
 from pyparts.platforms.pwm import raspberrypi_pwm as rpi_pwm
 from pyparts.platforms.spi import raspberrypi_spi as rpi_spi
 
-
 # Create local copies of the numbering schemes for conveinence.
 BCM = gpio.BCM
 BOARD = gpio.BOARD
@@ -30,7 +29,7 @@ class RaspberryPiPlatform(base_platform.BasePlatform):
 
     Args:
       pin_numbering: BCM or BOARD. Specifies the pin numbering scheme to use.
-        (default=BCM)
+        (default=BOARD)
 
     Raises:
       ValueError: The pin numbering scheme was not one of (BCM, BOARD).
@@ -43,7 +42,12 @@ class RaspberryPiPlatform(base_platform.BasePlatform):
     gpio.setmode(pin_numbering)
     self._pin_numbering = pin_numbering
 
-  def get_pin_numbering(self):
+  def __del__(self):
+    """Destructor. Cleans up GPIO pins."""
+    gpio.cleanup()
+
+  @property
+  def pin_numbering(self):
     """Gets the current pin numbering scheme.
 
     Returns:
@@ -58,7 +62,7 @@ class RaspberryPiPlatform(base_platform.BasePlatform):
       pin: Integer. Pin number to create the pin on.
 
     Returns:
-      A RaspberryPyDigitalInput object for the pin.
+      A RaspberryPiDigitalInput object for the pin.
     """
     return rpi_gpio.RaspberryPiDigitalInput(pin)
 
@@ -69,7 +73,7 @@ class RaspberryPiPlatform(base_platform.BasePlatform):
       pin: Integer. Pin number to create the pin on.
 
     Returns:
-      A RaspberryPyDigitalOutput object for the pin.
+      A RaspberryPiDigitalOutput object for the pin.
     """
     return rpi_gpio.RaspberryPiDigitalOutput(pin)
 
@@ -80,7 +84,7 @@ class RaspberryPiPlatform(base_platform.BasePlatform):
       pin: Integer. Pin number to create the pin on.
 
     Returns:
-      A RaspberryPyPWMOutput object for the pin.
+      A RaspberryPiPWMOutput object for the pin.
     """
     output = rpi_gpio.RaspberryPiDigitalOutput(pin)
     return rpi_pwm.RaspberryPiPWMOutput(output)

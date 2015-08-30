@@ -1,7 +1,12 @@
+# TODO: move these into the class so you dont have to import base modules
 # Pin modes
 OUTPUT = 0
 INPUT = 1
 BIDIRECTIONAL = 2
+
+# Internal resistor configurations
+PUD_UP = 1
+PUD_DOWN = 2
 
 # Pin values
 HIGH = True
@@ -27,15 +32,13 @@ class BaseGPIO(object):
     _mode: The mode the pin is in. For example INPUT or OUTPUT.
   """
 
-  PUD_UP = None
-  PUD_DOWN = None
-
   def __init__(self, pin, mode, pull_up_down):
     """Creates a GPIO pin.
 
     Args:
-      pin: The pin to create the GPIO on.
-      mode: The type of pin mode to use.
+      pin: Integer. The pin to create the GPIO on.
+      mode: INPUT, OUTPUT, or BIDIRECTIONAL. The type of pin mode to use.
+      pull_up_down: PUD_UP or PUD_DOWN. Enable pull up or pull down resistors.
     """
     self._pin = pin
     self._mode = mode
@@ -61,7 +64,8 @@ class BaseGPIO(object):
     """
     raise NotImplementedError
 
-  def get_pin_number(self):
+  @property
+  def pin_number(self):
     """Gets the pin number of the GPIO.
 
     Returns:
@@ -69,7 +73,8 @@ class BaseGPIO(object):
     """
     return self._pin
 
-  def get_mode(self):
+  @property
+  def mode(self):
     """Gets the mode the GPIO pin is in.
 
     Returns:
@@ -77,7 +82,13 @@ class BaseGPIO(object):
     """
     return self._mode
 
-  def get_pull_up_down(self):
+  @property
+  def pull_up_down(self):
+    """Gets the state of the GPIO pull up or pull down resistors.
+
+    Returns:
+      The state of the GPIO pull up or pull down resistors.
+    """
     return self._pull_up_down
 
   def set_high(self):
@@ -117,22 +128,39 @@ class BaseGPIO(object):
 
     Returns:
       True if the GPIO pin is in a LOW state, False otherwise.
-    return self._read() == LOW
     """
+    return self._read() == LOW
 
 
 class BaseDigitalInput(BaseGPIO):
+  """A class for creating digital input type peripherals.
 
-  # Platforms should define these
+  BaseDigitalInput adds interrupt functionality to BaseGPIO.
+  """
+
+  # Platforms should implement these
   INTERRUPT_FALLING = None
   INTERRUPT_RISING = None
   INTERRUPT_BOTH = None
 
   def add_interrupt(self, type, callback=None, debounce_time_ms=0):
+    """Adds an interrupt to the digital input pin.
+
+    Args:
+      type: FALLING, RISING, or BOTH. Edge to trigger the interrupt on.
+      callback: Function. The function to call when the interrupt fires.
+      debounce_time_ms: Integer. Debounce time to put on the interrupt.
+    """
     raise NotImplementedError
 
   def wait_for_edge(self, type):
+    """Blocks until the edge is detected.
+
+    Args:
+      type: RISING, FALLING, or BOTH. Edge to detect before unblocking.
+    """
     raise NotImplementedError
 
   def remove_interrupt(self):
+    """Removes all interrupts from the digital input pin."""
     raise NotImplementedError
