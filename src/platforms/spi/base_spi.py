@@ -94,7 +94,7 @@ class BaseSPIBus(object):
     """
     return self._clock_frequency_hz
 
-  @clock_frequency.setter
+  @clock_frequency_hz.setter
   def clock_frequency_hz(self, frequency_hz):
     """Sets the clock freqency used by the SPI bus.
 

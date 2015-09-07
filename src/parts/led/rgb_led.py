@@ -24,12 +24,12 @@ class RGBLed(base_part.BasePart):
     return self._red_pwm.is_enabled()
 
   def set_pwm_frequency(self, frequency_hz):
-    self._red_pwm.set_frequency(frequency_hz)
-    self._green_pwm.set_frequency(frequency_hz)
-    self._blue_pwm.set_frequency(frequency_hz)
+    self._red_pwm.frequency_hz = frequency_hz
+    self._green_pwm.frequency_hz = frequency_hz
+    self._blue_pwm.frequency_hz = frequency_hz
 
   def get_pwm_frequency(self):
-    return self._red_pwm.get_frequency()
+    return self._red_pwm.frequency_hz
 
   def set_rgb(self, red_duty_cycle, green_duty_cycle, blue_duty_cycle):
     self.set_red(red_duty_cycle)
@@ -40,22 +40,22 @@ class RGBLed(base_part.BasePart):
     return self.get_red(), self.get_green(), self.get_blue()
 
   def set_red(self, duty_cycle):
-    self._red_pwm.set_duty_cycle(duty_cycle)
+    self._red_pwm.duty_cycle = duty_cycle
 
   def get_red(self):
-    return self._red_pwm.get_duty_cycle()
+    return self._red_pwm.duty_cycle
 
   def set_green(self, duty_cycle):
-    self._green_pwm.set_duty_cycle(duty_cycle)
+    self._green_pwm.duty_cycle = duty_cycle
 
   def get_green(self):
-    return self._green_pwm.get_duty_cycle()
+    return self._green_pwm.duty_cycle
 
   def set_blue(self, duty_cycle):
-    self._blue_pwm.set_duty_cycle(duty_cycle)
+    self._blue_pwm.duty_cycle = duty_cycle
 
   def get_blue(self):
-    return self._blue_pwm.get_duty_cycle()
+    return self._blue_pwm.duty_cycle
 
   def fade(self, red, green, blue, delay_ms=500, step=5):
     for i in range(0, delay_ms, step):
