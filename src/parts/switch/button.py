@@ -1,5 +1,6 @@
 from pyparts.parts import base_part
 
+
 class Button(base_part.BasePart):
   
   def __init__(self, pin):
@@ -7,14 +8,14 @@ class Button(base_part.BasePart):
     self._enabled = False
 
   def set_on_down(self, callback, debounce_time_ms):
-    if self._pin.get_pull_up_down() == self._pin.PUD_UP:
+    if self._pin.pull_up_down == self._pin.PUD_UP:
       type = self._pin.INTERRUPT_FALLING
     else:
       type = self._pin.INTERRUPT_RISING
     self._pin.add_interrupt(type, callback, debounce_time_ms)
 
   def set_on_up(self, callback, debounce_time_ms):
-    if self._pin.get_pull_up_down() == self._pin.PUD_UP:
+    if self._pin.pull_up_down == self._pin.PUD_UP:
       type = self._pin.INTERRUPT_RISING
     else:
       type = self._pin.INTERRUPT_FALLING
@@ -34,4 +35,4 @@ class Button(base_part.BasePart):
     raise NotImplementedError
 
   def remove_callbacks(self):
-    self._ping.remove_interrupt()
+    self._pin.remove_interrupt()

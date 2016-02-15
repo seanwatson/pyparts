@@ -6,7 +6,7 @@ from pyparts.platforms.gpio import base_gpio
 class RaspberryPiGPIO(base_gpio.BaseGPIO):
   """Raspberry Pi implementation of a GPIO peripheral."""
 
-  def __init__(self, pin, mode, pull_up_down=base_gpio.PUD_UP):
+  def __init__(self, pin, mode, pull_up_down=base_gpio.BaseGPIO.PUD_UP):
     """Creates a GPIO pin for a Raspberry Pi.
 
     Args:
@@ -21,7 +21,7 @@ class RaspberryPiGPIO(base_gpio.BaseGPIO):
     else:
       pin_type = rpi_gpio.OUT
 
-    if pull_up_down == base_gpio.PUD_UP:
+    if pull_up_down == base_gpio.BaseGPIO.PUD_UP:
       pud = rpi_gpio.PUD_UP
     else:
       pud = rpi_gpio.PUD_DOWN

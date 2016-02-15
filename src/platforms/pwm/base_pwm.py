@@ -59,12 +59,14 @@ class BasePWM(object):
 
   def enable(self):
     """Enables the PWM output."""
-    self._enable()
+    if not self._enabled:
+      self._enable()
     self._enabled = True
 
   def disable(self):
     """Disables the PWM output."""
-    self._disable()
+    if self._enabled:
+      self._disable()
     self._enabled = False
 
   def is_enabled(self):

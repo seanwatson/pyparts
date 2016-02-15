@@ -69,12 +69,14 @@ class BaseSPIBus(object):
 
   def open(self):
     """Opens the SPI bus."""
-    self._open()
+    if not self._is_open:
+      self._open()
     self._is_open = True
 
   def close(self):
     """Closes the SPI bus."""
-    self._close()
+    if self._is_open:
+      self._close()
     self._is_open = False
 
   def is_open(self):

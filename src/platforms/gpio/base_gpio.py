@@ -4,10 +4,6 @@ OUTPUT = 0
 INPUT = 1
 BIDIRECTIONAL = 2
 
-# Internal resistor configurations
-PUD_UP = 1
-PUD_DOWN = 2
-
 # Pin values
 HIGH = True
 LOW = False
@@ -31,6 +27,10 @@ class BaseGPIO(object):
     _pin: The GPIO pin being used. For example a pin number.
     _mode: The mode the pin is in. For example INPUT or OUTPUT.
   """
+
+  # Internal resistor configurations
+  PUD_UP = 1
+  PUD_DOWN = 2
 
   def __init__(self, pin, mode, pull_up_down):
     """Creates a GPIO pin.

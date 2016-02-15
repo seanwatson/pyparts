@@ -73,14 +73,17 @@ class TemperatureController(object):
 
   def enable(self):
     """Enable the temperature sensor and begin controlling the temperature."""
-    self._pid_worker.start()
+    if not self._is_enabled:
+      self._pid_worker.start()
     self._is_enabled = True
 
   def disable(self):
     """Stops the temperature sensor and stops controlling the temperature."""
-    self._pid_worker.stop()
+    if self._is_enabled:
+      self._pid_worker.stop()
     self._is_enabled = False
 
+  @property
   def is_enabled(self):
     """Checks whether the temperature controller has been enabled or not.
 
