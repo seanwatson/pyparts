@@ -15,7 +15,7 @@ class RaspberryPiPWMOutput(base_pwm.BasePWM):
     
     Args:
       output_pin: DigitalOutput. A DigitalOutput pin to use for PWM output.
-      frequency_hz: Float. PWM frequency to use.
+      frequency_hz: Float. PWM frequency to use. (default=2000)
     """
     super(RaspberryPiPWMOutput, self).__init__(output_pin)
     self._pwm_pin = gpio.PWM(self._output_pin.pin_number, frequency_hz)

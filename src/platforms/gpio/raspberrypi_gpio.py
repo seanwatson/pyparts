@@ -13,15 +13,16 @@ class RaspberryPiGPIO(base_gpio.BaseGPIO):
       pin: Integer. The pin number to create the GPIO on.
       mode: INPUT or OUTPUT. The pin mode to put the GPIO in.
       pull_up_down: PUD_UP or PUD_DOWN. Enable pull up or pull down resistors.
+          (default=PUD_UP)
     """
     super(RaspberryPiGPIO, self).__init__(pin, mode, pull_up_down)
     
-    if self._mode == base_gpio.INPUT:
+    if self._mode == self.INPUT:
       pin_type = rpi_gpio.IN
     else:
       pin_type = rpi_gpio.OUT
 
-    if pull_up_down == base_gpio.BaseGPIO.PUD_UP:
+    if pull_up_down == self.PUD_UP:
       pud = rpi_gpio.PUD_UP
     else:
       pud = rpi_gpio.PUD_DOWN
@@ -58,7 +59,7 @@ class RaspberryPiDigitalInput(base_gpio.BaseDigitalInput, RaspberryPiGPIO):
     Args:
       pin: Integer. The pin to create the DigitalInput on.
     """
-    super(RaspberryPiDigitalInput, self).__init__(pin, base_gpio.INPUT)
+    super(RaspberryPiDigitalInput, self).__init__(pin, self.INPUT)
 
   def add_interrupt(self, type, callback=None, debounce_time_ms=0):
     """Creates an interrupt on the digital input pin.
@@ -66,7 +67,9 @@ class RaspberryPiDigitalInput(base_gpio.BaseDigitalInput, RaspberryPiGPIO):
     Args:
       type: FALLING, RISING, or BOTH. Edge type to trigger the interrupt on.
       callback. Function. The function to call when the interrupt fires.
+          (default=None)
       debounce_time_ms: Integer. Debounce time to add to the interrupt.
+          (default=0)
     """
     rpi_gpio.add_event_detect(self._pin, type, callback, debounce_time_ms)
 
@@ -92,4 +95,4 @@ class RaspberryPiDigitalOutput(RaspberryPiGPIO):
     Args:
       pin: Integer. The pin to create the DigitalOutput on.
     """
-    super(RaspberryPiDigitalOutput, self).__init__(pin, base_gpio.OUTPUT)
+    super(RaspberryPiDigitalOutput, self).__init__(pin, base_gpio.BaseGPIO.OUTPUT)

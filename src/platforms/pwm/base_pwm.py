@@ -1,3 +1,6 @@
+import abc
+
+
 class BasePWM(object):
   """A class for creating PWM type peripherals.
 
@@ -11,6 +14,7 @@ class BasePWM(object):
     _duty_cycle. Float from 0.0 to 100.0. The current duty cycle as a percent.
     _frequency_hz: Float. The current PWM frequency in Hertz.
   """
+  __metaclass__ = abc.ABCMeta
 
   def __init__(self, output_pin):
     """Creates a PWM output.
@@ -23,6 +27,7 @@ class BasePWM(object):
     self._duty_cycle = 0.0
     self._frequency_hz = 0.0
 
+  @abc.abstractmethod
   def _enable(self):
     """Enables the PWM output.
 
@@ -30,6 +35,7 @@ class BasePWM(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _disable(self):
     """Disables the PWM output.
 
@@ -37,6 +43,7 @@ class BasePWM(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _set_duty_cycle(self, duty_cycle):
     """Sets the duty cycle of the PWM output.
 
@@ -47,6 +54,7 @@ class BasePWM(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _set_frequency_hz(self, freqency_hz):
     """Sets the PWM frequency used for PWM output.
 
@@ -69,6 +77,7 @@ class BasePWM(object):
       self._disable()
     self._enabled = False
 
+  @property
   def is_enabled(self):
     """Checks if the PWM output is enabled.
 
@@ -86,8 +95,7 @@ class BasePWM(object):
     """
     return self._duty_cycle
 
-  @duty_cycle.setter
-  def duty_cycle(self, duty_cycle):
+  def set_duty_cycle(self, duty_cycle):
     """Sets the duty cycle of the PWM output.
 
     Args:
@@ -111,8 +119,7 @@ class BasePWM(object):
     """
     return self._frequency_hz
 
-  @frequency_hz.setter
-  def frequency_hz(self, frequency_hz):
+  def set_frequency_hz(self, frequency_hz):
     """Sets the PWM frequency used for PWM output.
 
     Args:

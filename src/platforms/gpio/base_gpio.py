@@ -1,8 +1,4 @@
-# TODO: move these into the class so you dont have to import base modules
-# Pin modes
-OUTPUT = 0
-INPUT = 1
-BIDIRECTIONAL = 2
+import abc
 
 # Pin values
 HIGH = True
@@ -27,6 +23,12 @@ class BaseGPIO(object):
     _pin: The GPIO pin being used. For example a pin number.
     _mode: The mode the pin is in. For example INPUT or OUTPUT.
   """
+  __metaclass__ = abc.ABCMeta
+
+  # Pin modes
+  OUTPUT = 0
+  INPUT = 1
+  BIDIRECTIONAL = 2
 
   # Internal resistor configurations
   PUD_UP = 1
@@ -44,6 +46,7 @@ class BaseGPIO(object):
     self._mode = mode
     self._pull_up_down = pull_up_down
 
+  @abc.abstractmethod
   def _write(self, value):
     """Writes a value to the pin.
 
@@ -54,6 +57,7 @@ class BaseGPIO(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _read(self):
     """Reads the current value of a pin.
 
@@ -98,11 +102,12 @@ class BaseGPIO(object):
       GPIOError: Trying to write to a pin in INPUT mode will throw an
         exception.
     """
-    if self._mode == INPUT:
+    if self._mode == self.INPUT:
       raise GPIOError('Failed to write pin %d high. Pin %d is an input.'
                       % (self._pin, self._pin))
     self._write(HIGH)
 
+  @property
   def is_high(self):
     """Checks if the GPIO pin has a value of HIGH.
 
@@ -118,11 +123,12 @@ class BaseGPIO(object):
       GPIOError: Trying to write to a pin in INPUT mode will throw an
         exception.
     """
-    if self._mode == INPUT:
+    if self._mode == self.INPUT:
       raise GPIOError('Failed to write pin %d low. Pin %d is an input.'
                       % (self._pin, self._pin))
     self._write(LOW)
 
+  @property
   def is_low(self):
     """Checks if the GPIO pin has a value of LOW.
 
@@ -143,16 +149,20 @@ class BaseDigitalInput(BaseGPIO):
   INTERRUPT_RISING = None
   INTERRUPT_BOTH = None
 
+  @abc.abstractmethod
   def add_interrupt(self, type, callback=None, debounce_time_ms=0):
     """Adds an interrupt to the digital input pin.
 
     Args:
       type: FALLING, RISING, or BOTH. Edge to trigger the interrupt on.
       callback: Function. The function to call when the interrupt fires.
+          (default=None)
       debounce_time_ms: Integer. Debounce time to put on the interrupt.
+          (default=0)
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def wait_for_edge(self, type):
     """Blocks until the edge is detected.
 

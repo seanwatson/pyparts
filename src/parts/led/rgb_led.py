@@ -20,47 +20,53 @@ class RGBLed(base_part.BasePart):
     self._green_pwm.disable()
     self._blue_pwm.disable()
 
+  @property
   def is_enabled(self):
-    return self._red_pwm.is_enabled()
+    return self._red_pwm.is_enabled
 
-  def set_pwm_frequency(self, frequency_hz):
-    self._red_pwm.frequency_hz = frequency_hz
-    self._green_pwm.frequency_hz = frequency_hz
-    self._blue_pwm.frequency_hz = frequency_hz
-
-  def get_pwm_frequency(self):
+  @property
+  def pwm_frequency_hz(self):
     return self._red_pwm.frequency_hz
+
+  def set_pwm_frequency_hz(self, frequency_hz):
+    self._red_pwm.set_frequency_hz(frequency_hz)
+    self._green_pwm.set_frequency_hz(frequency_hz)
+    self._blue_pwm.set_frequency_hz(frequency_hz)
+
+  @property
+  def rgb(self):
+    return self.red, self.green, self.blue
 
   def set_rgb(self, red_duty_cycle, green_duty_cycle, blue_duty_cycle):
     self.set_red(red_duty_cycle)
     self.set_green(green_duty_cycle)
     self.set_blue(blue_duty_cycle)
 
-  def get_rgb(self):
-    return self.get_red(), self.get_green(), self.get_blue()
-
-  def set_red(self, duty_cycle):
-    self._red_pwm.duty_cycle = duty_cycle
-
-  def get_red(self):
+  @property
+  def red(self):
     return self._red_pwm.duty_cycle
 
-  def set_green(self, duty_cycle):
-    self._green_pwm.duty_cycle = duty_cycle
+  def set_red(self, duty_cycle):
+    self._red_pwm.set_duty_cycle(duty_cycle)
 
-  def get_green(self):
+  @property
+  def green(self):
     return self._green_pwm.duty_cycle
 
-  def set_blue(self, duty_cycle):
-    self._blue_pwm.duty_cycle = duty_cycle
+  def set_green(self, duty_cycle):
+    self._green_pwm.set_duty_cycle(duty_cycle)
 
-  def get_blue(self):
+  @property
+  def blue(self):
     return self._blue_pwm.duty_cycle
+
+  def set_blue(self, duty_cycle):
+    self._blue_pwm.set_duty_cycle(duty_cycle)
 
   def fade(self, red, green, blue, delay_ms=500, step=5):
     for i in range(0, delay_ms, step):
       f = float(i) / delay_ms
-      self.set_red(self.get_red() + (red - self.get_red()) * f)
-      self.set_green(self.get_green() + (green - self.get_green()) * f)
-      self.set_blue(self.get_blue() + (blue - self.get_blue()) * f)
+      self.set_red(self.red + (red - self.red) * f)
+      self.set_green(self.green + (green - self.green) * f)
+      self.set_blue(self.blue + (blue - self.blue) * f)
       time.sleep(delay_ms / 1000)

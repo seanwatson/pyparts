@@ -25,7 +25,7 @@ class MAX31855(base_temperature_sensor.BaseTemperatureSensor):
     self._spi_bus.close()
     super(MAX31855, self).__del__()
 
-  def get_temp_c(self):
+  def _get_temp_c(self):
     value = self._read()
     value &= _THERMOCOUPLE_TEMP_MASK
     value >>= _THERMOCOUPLE_TEMP_SHIFT
@@ -33,7 +33,8 @@ class MAX31855(base_temperature_sensor.BaseTemperatureSensor):
       value -= 16384
     return value * _THERMOCOUPLE_DEGREES_C_PER_BIT
 
-  def get_internal_temp_c(self):
+  @property
+  def internal_temp_c(self):
     value = self._read()
     value &= _INTERNAL_TEMP_MASK
     value >>= _INTERNAL_TEMP_SHIFT
@@ -41,7 +42,8 @@ class MAX31855(base_temperature_sensor.BaseTemperatureSensor):
       value -= 4096
     return value * _INTERNAL_DEGREES_C_PER_BIT
 
-  def get_internal_temp_f(self):
+  @property
+  def internal_temp_f(self):
     return self._to_f(self.get_internal_temp_c())
 
   def _read(self):

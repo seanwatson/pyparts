@@ -102,8 +102,7 @@ class PIDController(object):
       """
       return self._set_point
 
-    @desired_value.setter
-    def desired_value(self, value):
+    def set_desired_value(self, value):
       """Sets the desired output value.
 
       Args:

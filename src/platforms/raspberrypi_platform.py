@@ -103,3 +103,11 @@ class RaspberryPiPlatform(base_platform.BasePlatform):
       A RaspberryPiHardwareSPIBus object for the port/device.
     """
     return rpi_spi.RaspberryPiHardwareSPIBus(port, device)
+
+  def get_software_spi_bus(self, sclk_pin, mosi_pin, miso_pin, ss_pin):
+      """Not implemented."""
+      raise NotImplementedError
+
+  def get_i2c_bus(self):
+      """Not implemented."""
+      raise NotImplementedError

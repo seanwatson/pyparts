@@ -18,6 +18,10 @@ class StepperMotor(base_part.BasePart):
   def disable(self):
     self._enable.set_low()
 
+  @property
+  def is_enabled(self):
+    return self._enable.is_high
+
   def forward(self, delay, steps):  
     for i in range(0, steps):
       self._setStep(1, 0, 1, 0)

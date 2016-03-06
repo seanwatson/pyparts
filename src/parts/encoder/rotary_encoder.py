@@ -15,8 +15,8 @@ class RotaryEncoder(base_part.BasePart):
     self._last_delta = 0
 
   def get_state(self):
-    a = 1 if self._a.is_high() else 0
-    b = 1 if self._b.is_high() else 0
+    a = 1 if self._a.is_high else 0
+    b = 1 if self._b.is_high else 0
     return (a ^ b) | b << 1
 
   def get_delta(self):

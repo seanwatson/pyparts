@@ -41,7 +41,7 @@ class TemperatureController(object):
 
   def _pid_input_func(self):
     """Input function to the PID controller."""
-    return self._temp_sensor.get_temp_c()
+    return self._temp_sensor.temp_c
 
   def _pid_output_func(self, val):
     """Output function to handle PID controller error values.
@@ -51,12 +51,13 @@ class TemperatureController(object):
     """
     # If the sensor is too hot, turn off the heater
     if val <= 0:
-      self._heater_pin.duty_cycle = 0
+      self._heater_pin.set_duty_cycle(0)
       return
     if val > self.MAX_ERROR_DEGREES_C:
-      self._heater_pin.duty_cycle = 100
+      self._heater_pin.set_duty_cycle(100)
       return
-    self._heater_pin.duty_cycle = (float(val) / self.MAX_ERROR_DEGREES_C) * 100
+    self._heater_pin.set_duty_cycle(
+        (float(val) / self.MAX_ERROR_DEGREES_C) * 100)
     time.sleep(1)
 
   def set_temp_c(self, temp_c):
@@ -67,7 +68,8 @@ class TemperatureController(object):
     """
     self._pid_worker.desired_value = temp
 
-  def get_temp_setting(self):
+  @property
+  def temp_setting(self):
     """Get the current temperature set point."""
     return self._pid_worker.desired_value
 

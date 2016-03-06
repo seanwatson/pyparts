@@ -1,3 +1,5 @@
+import abc
+
 class BaseSPIBus(object):
   """A class for creating SPI bus peripherals.
   
@@ -12,6 +14,7 @@ class BaseSPIBus(object):
     _mode: Integer between 0 and 3. The SPI bus mode.
     _bit_order: MSB_FIRST or LSB_FIRST. The bit order of the SPI bus.
   """
+  __metaclass__ = abc.ABCMeta
 
   MSB_FIRST = 0
   LSB_FIRST = 1
@@ -23,6 +26,7 @@ class BaseSPIBus(object):
     self._mode = 0
     self._bit_order = self.MSB_FIRST
 
+  @abc.abstractmethod
   def _open(self):
     """Opens the SPI bus.
     
@@ -30,6 +34,7 @@ class BaseSPIBus(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _close(self):
     """Closes the SPI bus.
     
@@ -37,6 +42,7 @@ class BaseSPIBus(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _set_clock_frequency_hz(self, frequency_hz):
     """Sets the SPI bus clock frequency.
     
@@ -47,6 +53,7 @@ class BaseSPIBus(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _set_mode(self, mode):
     """Sets the SPI bus mode..
 
@@ -57,6 +64,7 @@ class BaseSPIBus(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def _set_bit_order(self, order):
     """Sets the SPI bus bit order.
 
@@ -79,6 +87,7 @@ class BaseSPIBus(object):
       self._close()
     self._is_open = False
 
+  @property
   def is_open(self):
     """Checks if the SPI bus is open or not.
 
@@ -96,8 +105,7 @@ class BaseSPIBus(object):
     """
     return self._clock_frequency_hz
 
-  @clock_frequency_hz.setter
-  def clock_frequency_hz(self, frequency_hz):
+  def set_clock_frequency_hz(self, frequency_hz):
     """Sets the clock freqency used by the SPI bus.
 
     Args:
@@ -124,8 +132,7 @@ class BaseSPIBus(object):
     """
     return self._mode
 
-  @mode.setter
-  def mode(self, mode):
+  def set_mode(self, mode):
     """Sets the SPI bus mode.
 
     Args:
@@ -146,8 +153,7 @@ class BaseSPIBus(object):
   def bit_order(self):
     return self._bit_order
 
-  @bit_order.setter
-  def bit_order(self, order):
+  def set_bit_order(self, order):
     """Sets the SPI bus bit order.
 
     Args:
@@ -164,6 +170,7 @@ class BaseSPIBus(object):
     self._set_bit_order(order)
     self._bit_order = order
 
+  @abc.abstractmethod
   def write(self, data):
     """Writes data to the SPI bus.
 
@@ -174,6 +181,7 @@ class BaseSPIBus(object):
     """
     raise NotImplementedError
 
+  @abc.abstractmethod
   def read(self, length):
     """Reads at most length bytes from the SPI bus.
 
