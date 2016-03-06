@@ -11,7 +11,7 @@ with open('LICENSE', 'r') as f:
 
 
 setup(
-    name = 'pyparts',
+    name = 'python-pyparts',
     version = '1.0.0', 
     description = 'A cross platform library for embedded hardware development using single board computers.',
     long_description = readme,
