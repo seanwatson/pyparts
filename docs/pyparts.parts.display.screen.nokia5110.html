@@ -1,0 +1,105 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pyparts.parts.display.screen.nokia5110</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="pyparts.html"><font color="#ffffff">pyparts</font></a>.<a href="pyparts.parts.html"><font color="#ffffff">parts</font></a>.<a href="pyparts.parts.display.html"><font color="#ffffff">display</font></a>.<a href="pyparts.parts.display.screen.html"><font color="#ffffff">screen</font></a>.nokia5110</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/sean/src/python/pyparts/src/pyparts/parts/display/screen/nokia5110.py">/home/sean/src/python/pyparts/src/pyparts/parts/display/screen/nokia5110.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pyparts.parts.base_part.html">pyparts.parts.base_part</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="pyparts.parts.base_part.html#BasePart">pyparts.parts.base_part.BasePart</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyparts.parts.display.screen.nokia5110.html#Nokia5110">Nokia5110</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Nokia5110">class <strong>Nokia5110</strong></a>(<a href="pyparts.parts.base_part.html#BasePart">pyparts.parts.base_part.BasePart</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pyparts.parts.display.screen.nokia5110.html#Nokia5110">Nokia5110</a></dd>
+<dd><a href="pyparts.parts.base_part.html#BasePart">pyparts.parts.base_part.BasePart</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Nokia5110-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Nokia5110-__init__"><strong>__init__</strong></a>(self, spi, dc, rst, led)</dt><dd><tt>Creates&nbsp;a&nbsp;<a href="#Nokia5110">Nokia5110</a>&nbsp;display.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;spi:&nbsp;SPI&nbsp;peripheral&nbsp;object&nbsp;to&nbsp;communicate&nbsp;with&nbsp;the&nbsp;display&nbsp;over.<br>
+&nbsp;&nbsp;dc:&nbsp;Digital&nbsp;output.&nbsp;Used&nbsp;to&nbsp;toggle&nbsp;between&nbsp;data&nbsp;and&nbsp;command&nbsp;modes.<br>
+&nbsp;&nbsp;rst:&nbsp;Digital&nbsp;output.&nbsp;Reset&nbsp;pin.<br>
+&nbsp;&nbsp;led:&nbsp;LED&nbsp;object.&nbsp;Controls&nbsp;the&nbsp;backlight.</tt></dd></dl>
+
+<dl><dt><a name="Nokia5110-clear"><strong>clear</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Nokia5110-display_image"><strong>display_image</strong></a>(self, image)</dt></dl>
+
+<dl><dt><a name="Nokia5110-enable"><strong>enable</strong></a>(self, contrast<font color="#909090">=50</font>, bias<font color="#909090">=4</font>)</dt></dl>
+
+<dl><dt><a name="Nokia5110-reset"><strong>reset</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Nokia5110-reset_cursor"><strong>reset_cursor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Nokia5110-send_command"><strong>send_command</strong></a>(self, command)</dt></dl>
+
+<dl><dt><a name="Nokia5110-send_data"><strong>send_data</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Nokia5110-send_extended_command"><strong>send_extended_command</strong></a>(self, command)</dt></dl>
+
+<dl><dt><a name="Nokia5110-set_backlight"><strong>set_backlight</strong></a>(self, duty_cycle)</dt></dl>
+
+<dl><dt><a name="Nokia5110-set_bias"><strong>set_bias</strong></a>(self, bias)</dt></dl>
+
+<dl><dt><a name="Nokia5110-set_contrast"><strong>set_contrast</strong></a>(self, contrast)</dt></dl>
+
+<dl><dt><a name="Nokia5110-set_cursor"><strong>set_cursor</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>height</strong></dt>
+</dl>
+<dl><dt><strong>is_enabled</strong></dt>
+</dl>
+<dl><dt><strong>lines</strong></dt>
+</dl>
+<dl><dt><strong>width</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="pyparts.parts.base_part.html#BasePart">pyparts.parts.base_part.BasePart</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

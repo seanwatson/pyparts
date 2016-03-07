@@ -1,0 +1,99 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pyparts.logic.pid_controller</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="pyparts.html"><font color="#ffffff">pyparts</font></a>.<a href="pyparts.logic.html"><font color="#ffffff">logic</font></a>.pid_controller</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/sean/src/python/pyparts/src/pyparts/logic/pid_controller.py">/home/sean/src/python/pyparts/src/pyparts/logic/pid_controller.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyparts.logic.pid_controller.html#PIDController">PIDController</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PIDController">class <strong>PIDController</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;PID&nbsp;controller&nbsp;for&nbsp;controlling&nbsp;output&nbsp;based&nbsp;on&nbsp;desired&nbsp;value.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;_kp:&nbsp;Integer.&nbsp;The&nbsp;constant&nbsp;term.<br>
+&nbsp;&nbsp;_ki:&nbsp;Integer.&nbsp;The&nbsp;integrator&nbsp;term.<br>
+&nbsp;&nbsp;_kd:&nbsp;Integer.&nbsp;The&nbsp;differential&nbsp;term.<br>
+&nbsp;&nbsp;_prev_error:&nbsp;Float.&nbsp;The&nbsp;error&nbsp;value&nbsp;from&nbsp;the&nbsp;previous&nbsp;calculation.<br>
+&nbsp;&nbsp;_cp:&nbsp;Integer.&nbsp;Temp&nbsp;storage&nbsp;for&nbsp;constant&nbsp;term.<br>
+&nbsp;&nbsp;_ci:&nbsp;Integer.&nbsp;Accumulator&nbsp;for&nbsp;integrator&nbsp;error&nbsp;value.<br>
+&nbsp;&nbsp;_cd:&nbsp;Integer.&nbsp;Accumulator&nbsp;for&nbsp;differntial&nbsp;error&nbsp;value.<br>
+&nbsp;&nbsp;_prev_time:&nbsp;Integer.&nbsp;The&nbsp;time&nbsp;of&nbsp;the&nbsp;previous&nbsp;calculation.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="PIDController-__init__"><strong>__init__</strong></a>(self, kp, ki, kd)</dt><dd><tt>Creates&nbsp;a&nbsp;<a href="#PIDController">PIDController</a>.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;kp:&nbsp;Integer.&nbsp;The&nbsp;constant&nbsp;term.<br>
+&nbsp;&nbsp;ki:&nbsp;Integer.&nbsp;The&nbsp;integrator&nbsp;term.<br>
+&nbsp;&nbsp;kd:&nbsp;Integer.&nbsp;The&nbsp;differential&nbsp;term.</tt></dd></dl>
+
+<dl><dt><a name="PIDController-get_output"><strong>get_output</strong></a>(self, error)</dt><dd><tt>Does&nbsp;a&nbsp;PID&nbsp;calculation&nbsp;and&nbsp;returns&nbsp;the&nbsp;new&nbsp;output&nbsp;value.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;error:&nbsp;Float.&nbsp;The&nbsp;current&nbsp;error&nbsp;value.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Float.&nbsp;The&nbsp;output&nbsp;of&nbsp;the&nbsp;PID&nbsp;controller&nbsp;for&nbsp;the&nbsp;current&nbsp;error.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>Worker</strong> = &lt;class 'pyparts.logic.pid_controller.Worker'&gt;<dd><tt>A&nbsp;worker&nbsp;for&nbsp;a&nbsp;<a href="#PIDController">PIDController</a>&nbsp;to&nbsp;allow&nbsp;background&nbsp;processing.<br>
+&nbsp;<br>
+<a href="#PIDController">PIDController</a>.Worker&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;run&nbsp;a&nbsp;PID&nbsp;controller&nbsp;loop&nbsp;in&nbsp;a<br>
+background&nbsp;thread.&nbsp;The&nbsp;worker&nbsp;calls&nbsp;the&nbsp;input&nbsp;function&nbsp;to&nbsp;get&nbsp;the&nbsp;current<br>
+error&nbsp;value.&nbsp;It&nbsp;then&nbsp;computes&nbsp;the&nbsp;output&nbsp;value&nbsp;using&nbsp;the&nbsp;PID&nbsp;controller&nbsp;and<br>
+calls&nbsp;the&nbsp;output&nbsp;function&nbsp;with&nbsp;that&nbsp;value.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;_controller:&nbsp;<a href="#PIDController">PIDController</a>.&nbsp;The&nbsp;<a href="#PIDController">PIDController</a>&nbsp;used&nbsp;to&nbsp;calculate&nbsp;output<br>
+&nbsp;&nbsp;&nbsp;&nbsp;values.<br>
+&nbsp;&nbsp;_input_func:&nbsp;Function.&nbsp;Function&nbsp;called&nbsp;to&nbsp;determine&nbsp;error.<br>
+&nbsp;&nbsp;_output_func:&nbsp;Function.&nbsp;Function&nbsp;called&nbsp;with&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;PID.<br>
+&nbsp;&nbsp;_set_point:&nbsp;Float.&nbsp;The&nbsp;desired&nbsp;value.<br>
+&nbsp;&nbsp;_stop:&nbsp;Boolean.&nbsp;Set&nbsp;to&nbsp;true&nbsp;to&nbsp;disable&nbsp;the&nbsp;controller.</tt></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

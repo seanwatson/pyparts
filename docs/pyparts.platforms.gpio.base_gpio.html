@@ -1,0 +1,347 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pyparts.platforms.gpio.base_gpio</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="pyparts.html"><font color="#ffffff">pyparts</font></a>.<a href="pyparts.platforms.html"><font color="#ffffff">platforms</font></a>.<a href="pyparts.platforms.gpio.html"><font color="#ffffff">gpio</font></a>.base_gpio</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/sean/src/python/pyparts/src/pyparts/platforms/gpio/base_gpio.py">/home/sean/src/python/pyparts/src/pyparts/platforms/gpio/base_gpio.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="abc.html">abc</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyparts.platforms.gpio.base_gpio.html#BaseGPIO">BaseGPIO</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyparts.platforms.gpio.base_gpio.html#BaseDigitalInput">BaseDigitalInput</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>(<a href="exceptions.html#BaseException">exceptions.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyparts.platforms.gpio.base_gpio.html#GPIOError">GPIOError</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseDigitalInput">class <strong>BaseDigitalInput</strong></a>(<a href="pyparts.platforms.gpio.base_gpio.html#BaseGPIO">BaseGPIO</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;for&nbsp;creating&nbsp;digital&nbsp;input&nbsp;type&nbsp;peripherals.<br>
+&nbsp;<br>
+<a href="#BaseDigitalInput">BaseDigitalInput</a>&nbsp;adds&nbsp;interrupt&nbsp;functionality&nbsp;to&nbsp;<a href="#BaseGPIO">BaseGPIO</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pyparts.platforms.gpio.base_gpio.html#BaseDigitalInput">BaseDigitalInput</a></dd>
+<dd><a href="pyparts.platforms.gpio.base_gpio.html#BaseGPIO">BaseGPIO</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BaseDigitalInput-add_interrupt"><strong>add_interrupt</strong></a>(self, type, callback<font color="#909090">=None</font>, debounce_time_ms<font color="#909090">=0</font>)</dt><dd><tt>Adds&nbsp;an&nbsp;interrupt&nbsp;to&nbsp;the&nbsp;digital&nbsp;input&nbsp;pin.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;type:&nbsp;FALLING,&nbsp;RISING,&nbsp;or&nbsp;BOTH.&nbsp;Edge&nbsp;to&nbsp;trigger&nbsp;the&nbsp;interrupt&nbsp;on.<br>
+&nbsp;&nbsp;callback:&nbsp;Function.&nbsp;The&nbsp;function&nbsp;to&nbsp;call&nbsp;when&nbsp;the&nbsp;interrupt&nbsp;fires.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(default=None)<br>
+&nbsp;&nbsp;debounce_time_ms:&nbsp;Integer.&nbsp;Debounce&nbsp;time&nbsp;to&nbsp;put&nbsp;on&nbsp;the&nbsp;interrupt.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(default=0)</tt></dd></dl>
+
+<dl><dt><a name="BaseDigitalInput-remove_interrupt"><strong>remove_interrupt</strong></a>(self)</dt><dd><tt>Removes&nbsp;all&nbsp;interrupts&nbsp;from&nbsp;the&nbsp;digital&nbsp;input&nbsp;pin.</tt></dd></dl>
+
+<dl><dt><a name="BaseDigitalInput-wait_for_edge"><strong>wait_for_edge</strong></a>(self, type)</dt><dd><tt>Blocks&nbsp;until&nbsp;the&nbsp;edge&nbsp;is&nbsp;detected.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;type:&nbsp;RISING,&nbsp;FALLING,&nbsp;or&nbsp;BOTH.&nbsp;Edge&nbsp;to&nbsp;detect&nbsp;before&nbsp;unblocking.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>INTERRUPT_BOTH</strong> = None</dl>
+
+<dl><dt><strong>INTERRUPT_FALLING</strong> = None</dl>
+
+<dl><dt><strong>INTERRUPT_RISING</strong> = None</dl>
+
+<dl><dt><strong>__abstractmethods__</strong> = frozenset(['_read', '_write', 'add_interrupt', 'wait_for_edge'])</dl>
+
+<hr>
+Methods inherited from <a href="pyparts.platforms.gpio.base_gpio.html#BaseGPIO">BaseGPIO</a>:<br>
+<dl><dt><a name="BaseDigitalInput-__init__"><strong>__init__</strong></a>(self, pin, mode, pull_up_down)</dt><dd><tt>Creates&nbsp;a&nbsp;GPIO&nbsp;pin.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;pin:&nbsp;Integer.&nbsp;The&nbsp;pin&nbsp;to&nbsp;create&nbsp;the&nbsp;GPIO&nbsp;on.<br>
+&nbsp;&nbsp;mode:&nbsp;INPUT,&nbsp;OUTPUT,&nbsp;or&nbsp;BIDIRECTIONAL.&nbsp;The&nbsp;type&nbsp;of&nbsp;pin&nbsp;mode&nbsp;to&nbsp;use.<br>
+&nbsp;&nbsp;pull_up_down:&nbsp;PUD_UP&nbsp;or&nbsp;PUD_DOWN.&nbsp;Enable&nbsp;pull&nbsp;up&nbsp;or&nbsp;pull&nbsp;down&nbsp;resistors.</tt></dd></dl>
+
+<dl><dt><a name="BaseDigitalInput-set_high"><strong>set_high</strong></a>(self)</dt><dd><tt>Writes&nbsp;a&nbsp;value&nbsp;of&nbsp;HIGH&nbsp;to&nbsp;the&nbsp;GPIO&nbsp;pin.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;<a href="#GPIOError">GPIOError</a>:&nbsp;Trying&nbsp;to&nbsp;write&nbsp;to&nbsp;a&nbsp;pin&nbsp;in&nbsp;INPUT&nbsp;mode&nbsp;will&nbsp;throw&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exception.</tt></dd></dl>
+
+<dl><dt><a name="BaseDigitalInput-set_low"><strong>set_low</strong></a>(self)</dt><dd><tt>Writes&nbsp;a&nbsp;value&nbsp;of&nbsp;LOW&nbsp;to&nbsp;the&nbsp;GPIO&nbsp;pin.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;<a href="#GPIOError">GPIOError</a>:&nbsp;Trying&nbsp;to&nbsp;write&nbsp;to&nbsp;a&nbsp;pin&nbsp;in&nbsp;INPUT&nbsp;mode&nbsp;will&nbsp;throw&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exception.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="pyparts.platforms.gpio.base_gpio.html#BaseGPIO">BaseGPIO</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>is_high</strong></dt>
+<dd><tt>Checks&nbsp;if&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;has&nbsp;a&nbsp;value&nbsp;of&nbsp;HIGH.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;pin&nbsp;is&nbsp;in&nbsp;a&nbsp;HIGH&nbsp;state,&nbsp;False&nbsp;otherwise.</tt></dd>
+</dl>
+<dl><dt><strong>is_low</strong></dt>
+<dd><tt>Checks&nbsp;if&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;has&nbsp;a&nbsp;value&nbsp;of&nbsp;LOW.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;is&nbsp;in&nbsp;a&nbsp;LOW&nbsp;state,&nbsp;False&nbsp;otherwise.</tt></dd>
+</dl>
+<dl><dt><strong>mode</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;mode&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;is&nbsp;in.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;mode&nbsp;being&nbsp;used&nbsp;by&nbsp;the&nbsp;GPIO&nbsp;pin.</tt></dd>
+</dl>
+<dl><dt><strong>pin_number</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;pin&nbsp;number&nbsp;of&nbsp;the&nbsp;GPIO.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;GPIO's&nbsp;pin&nbsp;number.</tt></dd>
+</dl>
+<dl><dt><strong>pull_up_down</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;state&nbsp;of&nbsp;the&nbsp;GPIO&nbsp;pull&nbsp;up&nbsp;or&nbsp;pull&nbsp;down&nbsp;resistors.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;state&nbsp;of&nbsp;the&nbsp;GPIO&nbsp;pull&nbsp;up&nbsp;or&nbsp;pull&nbsp;down&nbsp;resistors.</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="pyparts.platforms.gpio.base_gpio.html#BaseGPIO">BaseGPIO</a>:<br>
+<dl><dt><strong>BIDIRECTIONAL</strong> = 2</dl>
+
+<dl><dt><strong>INPUT</strong> = 1</dl>
+
+<dl><dt><strong>OUTPUT</strong> = 0</dl>
+
+<dl><dt><strong>PUD_DOWN</strong> = 2</dl>
+
+<dl><dt><strong>PUD_UP</strong> = 1</dl>
+
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'abc.ABCMeta'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;defining&nbsp;Abstract&nbsp;Base&nbsp;Classes&nbsp;(ABCs).<br>
+&nbsp;<br>
+Use&nbsp;this&nbsp;metaclass&nbsp;to&nbsp;create&nbsp;an&nbsp;ABC.&nbsp;&nbsp;An&nbsp;ABC&nbsp;can&nbsp;be&nbsp;subclassed<br>
+directly,&nbsp;and&nbsp;then&nbsp;acts&nbsp;as&nbsp;a&nbsp;mix-in&nbsp;class.&nbsp;&nbsp;You&nbsp;can&nbsp;also&nbsp;register<br>
+unrelated&nbsp;concrete&nbsp;classes&nbsp;(even&nbsp;built-in&nbsp;classes)&nbsp;and&nbsp;unrelated<br>
+ABCs&nbsp;as&nbsp;'virtual&nbsp;subclasses'&nbsp;--&nbsp;these&nbsp;and&nbsp;their&nbsp;descendants&nbsp;will<br>
+be&nbsp;considered&nbsp;subclasses&nbsp;of&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;by&nbsp;the&nbsp;built-in<br>
+issubclass()&nbsp;function,&nbsp;but&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;won't&nbsp;show&nbsp;up&nbsp;in<br>
+their&nbsp;MRO&nbsp;(Method&nbsp;Resolution&nbsp;Order)&nbsp;nor&nbsp;will&nbsp;method<br>
+implementations&nbsp;defined&nbsp;by&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;be&nbsp;callable&nbsp;(not<br>
+even&nbsp;via&nbsp;super()).</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseGPIO">class <strong>BaseGPIO</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;for&nbsp;creating&nbsp;GPIO&nbsp;type&nbsp;peripherals.<br>
+&nbsp;<br>
+<a href="#BaseGPIO">BaseGPIO</a>&nbsp;implements&nbsp;basic&nbsp;GPIO&nbsp;functionality&nbsp;such&nbsp;as&nbsp;reading&nbsp;pin&nbsp;values<br>
+and&nbsp;setting&nbsp;pins&nbsp;high&nbsp;or&nbsp;low.&nbsp;Platforms&nbsp;are&nbsp;expected&nbsp;to&nbsp;subclass&nbsp;<a href="#BaseGPIO">BaseGPIO</a><br>
+and&nbsp;provide&nbsp;platform&nbsp;specific&nbsp;implementations&nbsp;of&nbsp;_write&nbsp;and&nbsp;_read.&nbsp;Platforms<br>
+will&nbsp;likely&nbsp;also&nbsp;have&nbsp;to&nbsp;override&nbsp;the&nbsp;constructor&nbsp;to&nbsp;do&nbsp;platform&nbsp;specific<br>
+initialization&nbsp;tasks&nbsp;like&nbsp;setting&nbsp;the&nbsp;pin&nbsp;to&nbsp;INPUT&nbsp;or&nbsp;OUTPUT.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;_pin:&nbsp;The&nbsp;GPIO&nbsp;pin&nbsp;being&nbsp;used.&nbsp;For&nbsp;example&nbsp;a&nbsp;pin&nbsp;number.<br>
+&nbsp;&nbsp;_mode:&nbsp;The&nbsp;mode&nbsp;the&nbsp;pin&nbsp;is&nbsp;in.&nbsp;For&nbsp;example&nbsp;INPUT&nbsp;or&nbsp;OUTPUT.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BaseGPIO-__init__"><strong>__init__</strong></a>(self, pin, mode, pull_up_down)</dt><dd><tt>Creates&nbsp;a&nbsp;GPIO&nbsp;pin.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;pin:&nbsp;Integer.&nbsp;The&nbsp;pin&nbsp;to&nbsp;create&nbsp;the&nbsp;GPIO&nbsp;on.<br>
+&nbsp;&nbsp;mode:&nbsp;INPUT,&nbsp;OUTPUT,&nbsp;or&nbsp;BIDIRECTIONAL.&nbsp;The&nbsp;type&nbsp;of&nbsp;pin&nbsp;mode&nbsp;to&nbsp;use.<br>
+&nbsp;&nbsp;pull_up_down:&nbsp;PUD_UP&nbsp;or&nbsp;PUD_DOWN.&nbsp;Enable&nbsp;pull&nbsp;up&nbsp;or&nbsp;pull&nbsp;down&nbsp;resistors.</tt></dd></dl>
+
+<dl><dt><a name="BaseGPIO-set_high"><strong>set_high</strong></a>(self)</dt><dd><tt>Writes&nbsp;a&nbsp;value&nbsp;of&nbsp;HIGH&nbsp;to&nbsp;the&nbsp;GPIO&nbsp;pin.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;<a href="#GPIOError">GPIOError</a>:&nbsp;Trying&nbsp;to&nbsp;write&nbsp;to&nbsp;a&nbsp;pin&nbsp;in&nbsp;INPUT&nbsp;mode&nbsp;will&nbsp;throw&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exception.</tt></dd></dl>
+
+<dl><dt><a name="BaseGPIO-set_low"><strong>set_low</strong></a>(self)</dt><dd><tt>Writes&nbsp;a&nbsp;value&nbsp;of&nbsp;LOW&nbsp;to&nbsp;the&nbsp;GPIO&nbsp;pin.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;<a href="#GPIOError">GPIOError</a>:&nbsp;Trying&nbsp;to&nbsp;write&nbsp;to&nbsp;a&nbsp;pin&nbsp;in&nbsp;INPUT&nbsp;mode&nbsp;will&nbsp;throw&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exception.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>is_high</strong></dt>
+<dd><tt>Checks&nbsp;if&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;has&nbsp;a&nbsp;value&nbsp;of&nbsp;HIGH.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;pin&nbsp;is&nbsp;in&nbsp;a&nbsp;HIGH&nbsp;state,&nbsp;False&nbsp;otherwise.</tt></dd>
+</dl>
+<dl><dt><strong>is_low</strong></dt>
+<dd><tt>Checks&nbsp;if&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;has&nbsp;a&nbsp;value&nbsp;of&nbsp;LOW.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;is&nbsp;in&nbsp;a&nbsp;LOW&nbsp;state,&nbsp;False&nbsp;otherwise.</tt></dd>
+</dl>
+<dl><dt><strong>mode</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;mode&nbsp;the&nbsp;GPIO&nbsp;pin&nbsp;is&nbsp;in.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;mode&nbsp;being&nbsp;used&nbsp;by&nbsp;the&nbsp;GPIO&nbsp;pin.</tt></dd>
+</dl>
+<dl><dt><strong>pin_number</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;pin&nbsp;number&nbsp;of&nbsp;the&nbsp;GPIO.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;GPIO's&nbsp;pin&nbsp;number.</tt></dd>
+</dl>
+<dl><dt><strong>pull_up_down</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;state&nbsp;of&nbsp;the&nbsp;GPIO&nbsp;pull&nbsp;up&nbsp;or&nbsp;pull&nbsp;down&nbsp;resistors.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;state&nbsp;of&nbsp;the&nbsp;GPIO&nbsp;pull&nbsp;up&nbsp;or&nbsp;pull&nbsp;down&nbsp;resistors.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>BIDIRECTIONAL</strong> = 2</dl>
+
+<dl><dt><strong>INPUT</strong> = 1</dl>
+
+<dl><dt><strong>OUTPUT</strong> = 0</dl>
+
+<dl><dt><strong>PUD_DOWN</strong> = 2</dl>
+
+<dl><dt><strong>PUD_UP</strong> = 1</dl>
+
+<dl><dt><strong>__abstractmethods__</strong> = frozenset(['_read', '_write'])</dl>
+
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'abc.ABCMeta'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;defining&nbsp;Abstract&nbsp;Base&nbsp;Classes&nbsp;(ABCs).<br>
+&nbsp;<br>
+Use&nbsp;this&nbsp;metaclass&nbsp;to&nbsp;create&nbsp;an&nbsp;ABC.&nbsp;&nbsp;An&nbsp;ABC&nbsp;can&nbsp;be&nbsp;subclassed<br>
+directly,&nbsp;and&nbsp;then&nbsp;acts&nbsp;as&nbsp;a&nbsp;mix-in&nbsp;class.&nbsp;&nbsp;You&nbsp;can&nbsp;also&nbsp;register<br>
+unrelated&nbsp;concrete&nbsp;classes&nbsp;(even&nbsp;built-in&nbsp;classes)&nbsp;and&nbsp;unrelated<br>
+ABCs&nbsp;as&nbsp;'virtual&nbsp;subclasses'&nbsp;--&nbsp;these&nbsp;and&nbsp;their&nbsp;descendants&nbsp;will<br>
+be&nbsp;considered&nbsp;subclasses&nbsp;of&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;by&nbsp;the&nbsp;built-in<br>
+issubclass()&nbsp;function,&nbsp;but&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;won't&nbsp;show&nbsp;up&nbsp;in<br>
+their&nbsp;MRO&nbsp;(Method&nbsp;Resolution&nbsp;Order)&nbsp;nor&nbsp;will&nbsp;method<br>
+implementations&nbsp;defined&nbsp;by&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;be&nbsp;callable&nbsp;(not<br>
+even&nbsp;via&nbsp;super()).</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GPIOError">class <strong>GPIOError</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Error&nbsp;type&nbsp;for&nbsp;exceptions&nbsp;while&nbsp;writing&nbsp;to&nbsp;GPIO&nbsp;pins.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pyparts.platforms.gpio.base_gpio.html#GPIOError">GPIOError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="GPIOError-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;help(type(x))&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#GPIOError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="GPIOError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="GPIOError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="GPIOError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="GPIOError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="GPIOError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="GPIOError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="GPIOError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="GPIOError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="GPIOError-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#GPIOError-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="GPIOError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>HIGH</strong> = True<br>
+<strong>LOW</strong> = False</td></tr></table>
+</body></html>

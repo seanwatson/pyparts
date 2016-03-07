@@ -1,0 +1,136 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pyparts.platforms.pwm.raspberrypi_pwm</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="pyparts.html"><font color="#ffffff">pyparts</font></a>.<a href="pyparts.platforms.html"><font color="#ffffff">platforms</font></a>.<a href="pyparts.platforms.pwm.html"><font color="#ffffff">pwm</font></a>.raspberrypi_pwm</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/sean/src/python/pyparts/src/pyparts/platforms/pwm/raspberrypi_pwm.py">/home/sean/src/python/pyparts/src/pyparts/platforms/pwm/raspberrypi_pwm.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pyparts.platforms.pwm.base_pwm.html">pyparts.platforms.pwm.base_pwm</a><br>
+</td><td width="25%" valign=top><a href="RPi.GPIO.html">RPi.GPIO</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="pyparts.platforms.pwm.base_pwm.html#BasePWM">pyparts.platforms.pwm.base_pwm.BasePWM</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyparts.platforms.pwm.raspberrypi_pwm.html#RaspberryPiPWMOutput">RaspberryPiPWMOutput</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RaspberryPiPWMOutput">class <strong>RaspberryPiPWMOutput</strong></a>(<a href="pyparts.platforms.pwm.base_pwm.html#BasePWM">pyparts.platforms.pwm.base_pwm.BasePWM</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Raspberry&nbsp;Pi&nbsp;implementation&nbsp;of&nbsp;a&nbsp;PWM&nbsp;peripheral.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;_pwm_pin:&nbsp;DigitalOutput.&nbsp;The&nbsp;pin&nbsp;being&nbsp;used&nbsp;for&nbsp;PWM.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pyparts.platforms.pwm.raspberrypi_pwm.html#RaspberryPiPWMOutput">RaspberryPiPWMOutput</a></dd>
+<dd><a href="pyparts.platforms.pwm.base_pwm.html#BasePWM">pyparts.platforms.pwm.base_pwm.BasePWM</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RaspberryPiPWMOutput-__init__"><strong>__init__</strong></a>(self, output_pin, frequency_hz<font color="#909090">=2000</font>)</dt><dd><tt>Creates&nbsp;a&nbsp;PWM&nbsp;output&nbsp;on&nbsp;a&nbsp;DigitalOutput&nbsp;pin.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;output_pin:&nbsp;DigitalOutput.&nbsp;A&nbsp;DigitalOutput&nbsp;pin&nbsp;to&nbsp;use&nbsp;for&nbsp;PWM&nbsp;output.<br>
+&nbsp;&nbsp;frequency_hz:&nbsp;Float.&nbsp;PWM&nbsp;frequency&nbsp;to&nbsp;use.&nbsp;(default=2000)</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+<hr>
+Methods inherited from <a href="pyparts.platforms.pwm.base_pwm.html#BasePWM">pyparts.platforms.pwm.base_pwm.BasePWM</a>:<br>
+<dl><dt><a name="RaspberryPiPWMOutput-disable"><strong>disable</strong></a>(self)</dt><dd><tt>Disables&nbsp;the&nbsp;PWM&nbsp;output.</tt></dd></dl>
+
+<dl><dt><a name="RaspberryPiPWMOutput-enable"><strong>enable</strong></a>(self)</dt><dd><tt>Enables&nbsp;the&nbsp;PWM&nbsp;output.</tt></dd></dl>
+
+<dl><dt><a name="RaspberryPiPWMOutput-set_duty_cycle"><strong>set_duty_cycle</strong></a>(self, duty_cycle)</dt><dd><tt>Sets&nbsp;the&nbsp;duty&nbsp;cycle&nbsp;of&nbsp;the&nbsp;PWM&nbsp;output.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;duty_cycle:&nbsp;Float&nbsp;from&nbsp;0.0&nbsp;to&nbsp;100.0.&nbsp;Duty&nbsp;cycle&nbsp;to&nbsp;set&nbsp;the&nbsp;PWM&nbsp;output&nbsp;to.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;ValueError:&nbsp;Thrown&nbsp;if&nbsp;duty_cycle&nbsp;is&nbsp;not&nbsp;between&nbsp;0.0&nbsp;and&nbsp;100.0</tt></dd></dl>
+
+<dl><dt><a name="RaspberryPiPWMOutput-set_frequency_hz"><strong>set_frequency_hz</strong></a>(self, frequency_hz)</dt><dd><tt>Sets&nbsp;the&nbsp;PWM&nbsp;frequency&nbsp;used&nbsp;for&nbsp;PWM&nbsp;output.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;frequency_hz:&nbsp;Float.&nbsp;The&nbsp;frequency&nbsp;to&nbsp;set&nbsp;the&nbsp;PWM&nbsp;output&nbsp;to.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;ValueError:&nbsp;Thrown&nbsp;if&nbsp;the&nbsp;frequency&nbsp;is&nbsp;negative.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="pyparts.platforms.pwm.base_pwm.html#BasePWM">pyparts.platforms.pwm.base_pwm.BasePWM</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>duty_cycle</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;current&nbsp;value&nbsp;for&nbsp;the&nbsp;PWM&nbsp;output's&nbsp;duty&nbsp;cycle.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;current&nbsp;duty&nbsp;cycle&nbsp;as&nbsp;a&nbsp;float.</tt></dd>
+</dl>
+<dl><dt><strong>frequency_hz</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;current&nbsp;frequency&nbsp;used&nbsp;by&nbsp;the&nbsp;PWM&nbsp;output.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;current&nbsp;frequency&nbsp;in&nbsp;Hertz&nbsp;as&nbsp;a&nbsp;float.</tt></dd>
+</dl>
+<dl><dt><strong>is_enabled</strong></dt>
+<dd><tt>Checks&nbsp;if&nbsp;the&nbsp;PWM&nbsp;output&nbsp;is&nbsp;enabled.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;PWM&nbsp;output&nbsp;is&nbsp;enabled,&nbsp;Flase&nbsp;otherwise.</tt></dd>
+</dl>
+<dl><dt><strong>pin_number</strong></dt>
+<dd><tt>Gets&nbsp;the&nbsp;pin&nbsp;number&nbsp;of&nbsp;the&nbsp;PWM&nbsp;output.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;The&nbsp;pin&nbsp;number&nbsp;as&nbsp;an&nbsp;integer.</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="pyparts.platforms.pwm.base_pwm.html#BasePWM">pyparts.platforms.pwm.base_pwm.BasePWM</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'abc.ABCMeta'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;defining&nbsp;Abstract&nbsp;Base&nbsp;Classes&nbsp;(ABCs).<br>
+&nbsp;<br>
+Use&nbsp;this&nbsp;metaclass&nbsp;to&nbsp;create&nbsp;an&nbsp;ABC.&nbsp;&nbsp;An&nbsp;ABC&nbsp;can&nbsp;be&nbsp;subclassed<br>
+directly,&nbsp;and&nbsp;then&nbsp;acts&nbsp;as&nbsp;a&nbsp;mix-in&nbsp;class.&nbsp;&nbsp;You&nbsp;can&nbsp;also&nbsp;register<br>
+unrelated&nbsp;concrete&nbsp;classes&nbsp;(even&nbsp;built-in&nbsp;classes)&nbsp;and&nbsp;unrelated<br>
+ABCs&nbsp;as&nbsp;'virtual&nbsp;subclasses'&nbsp;--&nbsp;these&nbsp;and&nbsp;their&nbsp;descendants&nbsp;will<br>
+be&nbsp;considered&nbsp;subclasses&nbsp;of&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;by&nbsp;the&nbsp;built-in<br>
+issubclass()&nbsp;function,&nbsp;but&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;won't&nbsp;show&nbsp;up&nbsp;in<br>
+their&nbsp;MRO&nbsp;(Method&nbsp;Resolution&nbsp;Order)&nbsp;nor&nbsp;will&nbsp;method<br>
+implementations&nbsp;defined&nbsp;by&nbsp;the&nbsp;registering&nbsp;ABC&nbsp;be&nbsp;callable&nbsp;(not<br>
+even&nbsp;via&nbsp;super()).</tt></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

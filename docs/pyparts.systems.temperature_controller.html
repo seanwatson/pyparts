@@ -1,0 +1,101 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pyparts.systems.temperature_controller</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="pyparts.html"><font color="#ffffff">pyparts</font></a>.<a href="pyparts.systems.html"><font color="#ffffff">systems</font></a>.temperature_controller</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/sean/src/python/pyparts/src/pyparts/systems/temperature_controller.py">/home/sean/src/python/pyparts/src/pyparts/systems/temperature_controller.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pyparts.logic.pid_controller.html">pyparts.logic.pid_controller</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyparts.systems.temperature_controller.html#TemperatureController">TemperatureController</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TemperatureController">class <strong>TemperatureController</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;PID&nbsp;based&nbsp;temperature&nbsp;controller.<br>
+&nbsp;<br>
+<a href="#TemperatureController">TemperatureController</a>&nbsp;uses&nbsp;a&nbsp;PID&nbsp;controller&nbsp;to&nbsp;regulate&nbsp;temperature.<br>
+A&nbsp;temperature&nbsp;sensor&nbsp;is&nbsp;used&nbsp;to&nbsp;read&nbsp;the&nbsp;current&nbsp;temperature&nbsp;and&nbsp;a&nbsp;PWM&nbsp;based<br>
+heater&nbsp;is&nbsp;used&nbsp;to&nbsp;increase&nbsp;the&nbsp;temperature&nbsp;when&nbsp;needed.&nbsp;Once&nbsp;the&nbsp;desired<br>
+temperature&nbsp;is&nbsp;reached&nbsp;the&nbsp;heater&nbsp;turns&nbsp;off&nbsp;until&nbsp;the&nbsp;temperature&nbsp;falls&nbsp;below<br>
+the&nbsp;desired&nbsp;temperature.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;_temp_sensor:&nbsp;TemperatureSensor.&nbsp;A&nbsp;temperature&nbsp;sensor&nbsp;to&nbsp;read&nbsp;temperature<br>
+&nbsp;&nbsp;&nbsp;&nbsp;values&nbsp;from.<br>
+&nbsp;&nbsp;_heater_pin:&nbsp;PwmOutput.&nbsp;A&nbsp;PWM&nbsp;output&nbsp;that&nbsp;controls&nbsp;a&nbsp;heating&nbsp;element.<br>
+&nbsp;&nbsp;_pid_worker:&nbsp;PIDController.Worker.&nbsp;Worker&nbsp;thread&nbsp;for&nbsp;maintaining&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;temperature.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="TemperatureController-__init__"><strong>__init__</strong></a>(self, temp_sensor, heater_pin, kp, ki, kd)</dt><dd><tt>Creates&nbsp;a&nbsp;<a href="#TemperatureController">TemperatureController</a>.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;temp_sensor:&nbsp;TemperatureSensor.&nbsp;A&nbsp;temperature&nbsp;sensor&nbsp;to&nbsp;read&nbsp;temperature.<br>
+&nbsp;&nbsp;heater_pin:&nbsp;PwmOutput.&nbsp;A&nbsp;PWM&nbsp;output&nbsp;that&nbsp;controls&nbsp;a&nbsp;heating&nbsp;element.<br>
+&nbsp;&nbsp;kp:&nbsp;Integer.&nbsp;PID&nbsp;controller&nbsp;constant&nbsp;term.<br>
+&nbsp;&nbsp;ki:&nbsp;Integer.&nbsp;PID&nbsp;controller&nbsp;integrator&nbsp;term.<br>
+&nbsp;&nbsp;kd:&nbsp;Integer.&nbsp;PID&nbsp;controller&nbsp;differentiator&nbsp;term.</tt></dd></dl>
+
+<dl><dt><a name="TemperatureController-disable"><strong>disable</strong></a>(self)</dt><dd><tt>Stops&nbsp;the&nbsp;temperature&nbsp;sensor&nbsp;and&nbsp;stops&nbsp;controlling&nbsp;the&nbsp;temperature.</tt></dd></dl>
+
+<dl><dt><a name="TemperatureController-enable"><strong>enable</strong></a>(self)</dt><dd><tt>Enable&nbsp;the&nbsp;temperature&nbsp;sensor&nbsp;and&nbsp;begin&nbsp;controlling&nbsp;the&nbsp;temperature.</tt></dd></dl>
+
+<dl><dt><a name="TemperatureController-set_temp_c"><strong>set_temp_c</strong></a>(self, temp_c)</dt><dd><tt>Set&nbsp;the&nbsp;desired&nbsp;temerature&nbsp;value.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;temp_c:&nbsp;Integer.&nbsp;The&nbsp;temperature&nbsp;to&nbsp;target&nbsp;with&nbsp;the&nbsp;controller.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>is_enabled</strong></dt>
+<dd><tt>Checks&nbsp;whether&nbsp;the&nbsp;temperature&nbsp;controller&nbsp;has&nbsp;been&nbsp;enabled&nbsp;or&nbsp;not.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;Boolean.&nbsp;True&nbsp;if&nbsp;the&nbsp;controller&nbsp;has&nbsp;been&nbsp;started.</tt></dd>
+</dl>
+<dl><dt><strong>temp_setting</strong></dt>
+<dd><tt>Get&nbsp;the&nbsp;current&nbsp;temperature&nbsp;set&nbsp;point.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>MAX_ERROR_DEGREES_C</strong> = 10.0</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
